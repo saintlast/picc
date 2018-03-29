@@ -12,9 +12,20 @@
 import vHead from './header.vue';
 import vSidebar from './sideBar.vue';
 export default {
+	data() {
+		return {
+			notify: {},
+		};
+	},
 	components: {
 		vHead,
 		vSidebar,
+	},
+	watch: {
+		notify(newVal, oldVal) {
+			console.log('xxx');
+			this.openNotify();
+		},
 	},
 	methods: {
 		openNotify() {
@@ -23,6 +34,8 @@ export default {
 				dangerouslyUseHTMLString: true,
 				message: '<strong>这是 <i>HTML</i> 片段</strong>',
 				position: 'bottom-right',
+				onClick: function() {},
+				duration: 0,
 			});
 		},
 	},

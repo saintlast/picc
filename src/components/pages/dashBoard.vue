@@ -507,7 +507,7 @@ export default {
 				title: 'HTML 片段',
 				dangerouslyUseHTMLString: true,
 				message:
-					'<div class="custom-notify" @click="viewDetail"></div><strong>这是 <i>HTML</i> 片段</strong></div>',
+					'<div class="custom-notify" v-on:click="viewDetail"></div><strong>这是 <i>HTML</i> 片段</strong></div>',
 				position: 'bottom-right',
 				onClick: function() {
 					console.log('222');

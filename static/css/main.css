@@ -141,3 +141,17 @@ a {
 .pure-button {
   background: #20a0ff;
 }
+
+.handle-box {
+  padding: 20px 0;
+}
+.form-group {
+  display: inline-block;
+  margin: 0 20px;
+}
+.form-label {
+  padding-right: 10px;
+}
+.form-control {
+  width: 200px;
+}

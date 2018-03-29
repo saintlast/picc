@@ -19,17 +19,9 @@ export default {
     );
   },
 
-  /**
-   * 选择兑换美元存款用户
-   * POST /exchangeOrder/selectExchangeUser
-   * exchangeOrderNo
-   * dollarUserIdList array
-   * @returns {null}
-   */
-  selectExchangeUser(exchangeOrderNo, dollarUserIdList) {
-    return Vue.http.post('/exchangeOrder/selectExchangeUser', {
-      exchangeOrderNo: exchangeOrderNo,
-      dollarUserIdList: dollarUserIdList,
+  getReserveDetail(id) {
+    return Vue.http.post('https://www.easy-mock.com/mock/5abbb60dbbba3f31b063e510/api/getReserveDetail', {
+      id: id,
     });
   },
 };
