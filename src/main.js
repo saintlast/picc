@@ -7,9 +7,25 @@ import axios from 'axios';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import 'babel-polyfill';
+import Ajax from './libs/ajax';
 Vue.use(ElementUI);
 Vue.config.productionTip = false;
-Vue.prototype.$axios = axios;
+
+let qs = require('querystring');
+Vue.use(Ajax, {
+  baseURL: 'http://192.168.1.22:8111/api',
+  // baseURL: 'http://hhb.8jiong.com/api',
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded',
+  },
+  transformRequest: [
+    function(data) {
+      data = qs.stringify(data);
+      return data;
+    },
+  ],
+  params: {},
+});
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

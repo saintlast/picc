@@ -64,6 +64,11 @@
     @click="open6">
     错误
   </el-button>
+  <el-button
+    plain
+    @click="openNotify">
+    自定义弹框
+  </el-button>
 
         </div>
     </div>
@@ -495,6 +500,23 @@ export default {
 				title: '错误',
 				message: '这是一条错误的提示消息',
 			});
+		},
+
+		openNotify() {
+			this.$notify({
+				title: 'HTML 片段',
+				dangerouslyUseHTMLString: true,
+				message:
+					'<div class="custom-notify" @click="viewDetail"></div><strong>这是 <i>HTML</i> 片段</strong></div>',
+				position: 'bottom-right',
+				onClick: function() {
+					console.log('222');
+				},
+				duration: 0,
+			});
+		},
+		viewDetail() {
+			console.log('111');
 		},
 	},
 };

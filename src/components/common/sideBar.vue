@@ -1,7 +1,7 @@
 <template>
     <div class="sidebar">
 
-<el-menu
+	<el-menu
       default-active="onRoutes"
       class="el-menu-vertical-demo"
       @open="handleOpen"
@@ -9,32 +9,19 @@
       background-color="#324157"
       text-color="#bfcbd9"
       active-text-color="#20a0ff" unique-opened router>
-	  <el-menu-item index="dashBoard">
-        <i class="el-icon-document"></i>
-        <span slot="title">首页</span>
-      </el-menu-item>
-
-
-
-<el-submenu index="2">
-        <template slot="title">
-          <i class="el-icon-location"></i>
-          <span>基础</span>
-        </template>
-         <el-menu-item index="basetable">基础表格</el-menu-item>
-          <el-menu-item index="baseform">基础表单</el-menu-item>
-      </el-submenu>
-
-
-      <el-menu-item index="3">
-        <i class="el-icon-document"></i>
-        <span slot="title">导航三</span>
-      </el-menu-item>
-	  
-      <el-menu-item index="4">
-        <i class="el-icon-setting"></i>
-        <span slot="title">导航四</span>
-      </el-menu-item>
+		<template  v-for="item in categorys">
+			<el-submenu :index="item.index" v-if="item.subs">
+				<template slot="title">
+					<i :class="item.icon"></i>
+					<span>{{item.title}}</span>
+				</template>
+				<el-menu-item v-for="(subItem,i) in item.subs" :key="i" :index="subItem.index">{{ subItem.title }}
+                        </el-menu-item>
+			</el-submenu>
+			<el-menu-item :index="item.index" v-else>
+				<i :class="item.icon"></i>{{ item.title }}
+			</el-menu-item>
+		</template>
     </el-menu>
 
     </div>
@@ -43,7 +30,64 @@
 <script>
 export default {
 	data() {
-		return {};
+		return {
+			categorys: [
+				// {
+				// 	icon: 'el-icon-setting',
+				// 	index: 'dashBoard',
+				// 	title: '',
+				// },
+				{
+					icon: 'el-icon-menu',
+					index: '2',
+					title: '运行管理',
+					subs: [
+						{
+							index: 'reserve',
+							title: '预约管理',
+						},
+						{
+							index: 'order',
+							title: '订单管理',
+						},
+						{
+							index: 'comment',
+							title: '评价管理',
+						},
+						{
+							index: 'complaint',
+							title: '投诉管理',
+						},
+					],
+				},
+				{
+					icon: 'el-icon-date',
+					index: '3',
+					title: '会员管理',
+					subs: [
+						{
+							index: 'member',
+							title: '会员管理',
+						},
+					],
+				},
+				{
+					icon: 'el-icon-star-on',
+					index: 'basecharts',
+					title: '俱乐部管理',
+					subs: [
+						{
+							index: 'store',
+							title: '门店信息维护',
+						},
+						{
+							index: 'employee',
+							title: '员工管理',
+						},
+					],
+				},
+			],
+		};
 	},
 	computed: {
 		onRoutes() {
