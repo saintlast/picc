@@ -39,49 +39,49 @@ export default {
 				// },
 				{
 					icon: 'el-icon-menu',
-					index: '2',
+					index: '1',
 					title: '运行管理',
 					subs: [
 						{
-							index: 'reserve',
+							index: '/reserve',
 							title: '预约管理',
 						},
 						{
-							index: 'order',
+							index: '/order',
 							title: '订单管理',
 						},
 						{
-							index: 'comment',
+							index: '/comment',
 							title: '评价管理',
 						},
 						{
-							index: 'complaint',
+							index: '/complaint',
 							title: '投诉管理',
 						},
 					],
 				},
 				{
 					icon: 'el-icon-date',
-					index: '3',
+					index: '2',
 					title: '会员管理',
 					subs: [
 						{
-							index: 'member',
+							index: '/member',
 							title: '会员管理',
 						},
 					],
 				},
 				{
 					icon: 'el-icon-star-on',
-					index: 'basecharts',
+					index: '3',
 					title: '俱乐部管理',
 					subs: [
 						{
-							index: 'store',
+							index: '/store',
 							title: '门店信息维护',
 						},
 						{
-							index: 'employee',
+							index: '/employee',
 							title: '员工管理',
 						},
 					],

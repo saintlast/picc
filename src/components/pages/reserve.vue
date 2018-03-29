@@ -6,19 +6,19 @@
                 <el-breadcrumb-item>预约管理</el-breadcrumb-item>
             </el-breadcrumb>
         </div>
-        <div class="handle-box">
-            <div class="form-group">
+        <el-row :gutter="10"  class="handle-box">
+           <el-col :xs="11" :sm="11" :md="11" :lg="11" :xl="7" class="form-group">
                 <span class="form-label">预约状态:</span>
                 <el-select v-model="search.status" placeholder="预约状态" class="form-control mr10">
-                    <el-option key="1" label="广东省" value="广东省"></el-option>
-                    <el-option key="2" label="湖南省" value="湖南省"></el-option>
+                    <el-option key="1" label="预约中" value="预约中"></el-option>
+                    <el-option key="2" label="已接待" value="已接待"></el-option>
                 </el-select>
-            </div>
-            <div class="form-group">
+            </el-col>
+           <el-col :xs="11" :sm="11" :md="11" :lg="11" :xl="7" class="form-group">
                 <span class="form-label">车牌号码:</span>
-                <el-input v-model="search.carNo" placeholder="筛选关键词" class="form-control"></el-input>
-            </div>
-            <div class="form-group">
+                <el-input v-model="search.carNo" placeholder="车牌号码" class="form-control"></el-input>
+            </el-col>
+           <el-col :xs="11" :sm="11" :md="11" :lg="11" :xl="7" class="form-group">
                 <span class="form-label">接收日期:</span>
                 <el-date-picker
                     v-model="search.reveiveDate"
@@ -27,10 +27,11 @@
                     start-placeholder="开始日期"
                     end-placeholder="结束日期">
                 </el-date-picker>
-            </div>
-
-            <el-button type="primary" icon="search">搜索</el-button>
-        </div>
+           </el-col> 
+           <el-col :xs="11" :sm="11" :md="11" :lg="11" :xl="3" class="form-group">
+                <el-button type="primary" icon="search">搜索</el-button>
+           </el-col>
+        </el-row>
         <div class="handle-box">
             <el-button type="primary">查看</el-button>
             <el-button type="primary">导出</el-button>
@@ -111,7 +112,7 @@
 </template>
 
 <script>
-import api from '../../libs/api';
+import apis from '../../libs/api';
 export default {
 	data() {
 		return {
@@ -134,7 +135,7 @@ export default {
 	methods: {
 		//获取列表
 		getReserveList(limit, offset) {
-			api
+			apis
 				.getReserveList(limit, offset)
 				.then(response => {
 					let res = response.data;

@@ -143,15 +143,32 @@ a {
 }
 
 .handle-box {
-  padding: 20px 0;
+  padding: 10px 0;
 }
 .form-group {
-  display: inline-block;
-  margin: 0 20px;
+  padding: 10px 0;
+  line-height: 40px;
 }
 .form-label {
   padding-right: 10px;
 }
 .form-control {
+  display: inline-block;
   width: 200px;
+}
+
+.text-center {
+  text-align: center;
+}
+.pt10 {
+  padding-top: 10px;
+}
+.pt20 {
+  padding-top: 20px;
+}
+.mt10 {
+  margin-top: 10px;
+}
+.mt20 {
+  margin-top: 20px;
 }
