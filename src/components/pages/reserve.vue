@@ -6,32 +6,34 @@
                 <el-breadcrumb-item>预约管理</el-breadcrumb-item>
             </el-breadcrumb>
         </div>
-        <el-row :gutter="10"  class="handle-box">
-           <el-col :xs="11" :sm="11" :md="11" :lg="11" :xl="7" class="form-group">
-                <span class="form-label">预约状态:</span>
-                <el-select v-model="search.status" placeholder="预约状态" class="form-control mr10">
-                    <el-option key="1" label="预约中" value="预约中"></el-option>
-                    <el-option key="2" label="已接待" value="已接待"></el-option>
-                </el-select>
-            </el-col>
-           <el-col :xs="11" :sm="11" :md="11" :lg="11" :xl="7" class="form-group">
-                <span class="form-label">车牌号码:</span>
+        <el-form :inline="true" :model="search" class="handle-box">
+                <el-form-item label="车牌号码">
                 <el-input v-model="search.carNo" placeholder="车牌号码" class="form-control"></el-input>
-            </el-col>
-           <el-col :xs="11" :sm="11" :md="11" :lg="11" :xl="7" class="form-group">
-                <span class="form-label">接收日期:</span>
-                <el-date-picker
-                    v-model="search.reveiveDate"
-                    type="daterange"
-                    range-separator="至"
-                    start-placeholder="开始日期"
-                    end-placeholder="结束日期">
-                </el-date-picker>
-           </el-col> 
-           <el-col :xs="11" :sm="11" :md="11" :lg="11" :xl="3" class="form-group">
-                <el-button type="primary" icon="search">搜索</el-button>
-           </el-col>
-        </el-row>
+            </el-form-item>
+            <el-form-item label="活动区域">
+                <el-select v-model="search.status" placeholder="预约状态" class="form-control mr10">
+                <el-option key="1" label="预约中" value="预约中"></el-option>
+                <el-option key="2" label="已接待" value="已接待"></el-option>
+            </el-select>
+            </el-form-item>
+            <el-form-item label="活动时间">
+                <el-col :span="11">
+                <el-form-item>
+                    <el-date-picker type="date" placeholder="开始时间" v-model="search.beginTime" style="width: 100%;"></el-date-picker>
+                </el-form-item>
+                </el-col>
+                <el-col class="line" :span="2">-</el-col>
+                <el-col :span="11">
+                <el-form-item>
+                    <el-date-picker type="date" placeholder="结束时间" v-model="search.endTime" style="width: 100%;"></el-date-picker>
+                </el-form-item>
+                </el-col>
+            </el-form-item>
+            <el-form-item>
+                <el-button type="primary" @click="doSearch">查询</el-button>
+            </el-form-item>
+        </el-form>
+          
         <div class="handle-box">
             <el-button type="primary">查看</el-button>
             <el-button type="primary">导出</el-button>
@@ -91,11 +93,12 @@
                 </template>
             </el-table-column>
 
-            <div style="margin-top: 20px">
-                <el-button @click="toggleSelection([tableData3[1], tableData3[2]])">切换第二、第三行的选中状态</el-button>
+            
+        </el-table>
+        <div style="margin-top: 20px">
+                <el-button @click="toggleSelection([reserveList[1], reserveList[2]])">切换第二、第三行的选中状态</el-button>
                 <el-button @click="toggleSelection()">取消选择</el-button>
             </div>
-        </el-table>
         <div class="pagination">
              <el-pagination
                 background
@@ -168,6 +171,10 @@ export default {
 		deleteRow(index, rows) {
 			rows.splice(index, 1);
 		},
+
+		//搜索
+		doSearch() {},
+
 		toggleSelection(rows) {
 			if (rows) {
 				rows.forEach(row => {
@@ -199,6 +206,7 @@ export default {
 			}
 			return statusTxt;
 		},
+
 		filterTag(value, row) {
 			return row.tag === value;
 		},
